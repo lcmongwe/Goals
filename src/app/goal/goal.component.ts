@@ -15,6 +15,14 @@ export class GoalComponent implements OnInit {
     new Goal(5, 'solve math homework', 'math is good'),
     new Goal(6, 'plot my world domination plan', 'oooh nice'),
   ];
+  toggleDetails(index: number) {
+    this.goals[index].showDescription = !this.goals[index].showDescription;
+  }
+  completeGoal(isComplete: boolean, index: number) {
+    if (isComplete) {
+      this.goals.splice(index, 1);
+    }
+  }
 
   constructor() {}
 
