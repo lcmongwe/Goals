@@ -8,12 +8,12 @@ import { Goal } from '../goal';
 })
 export class GoalComponent implements OnInit {
   goals: Goal[] = [
-    { id: 1, name: 'watch finding nemo', description: 'it is interesting' },
-    { id: 2, name: 'buy cookies', description: 'i love cookies' },
-    { id: 3, name: 'get new phone case', description: 'diana broke her case' },
-    { id: 4, name: 'get dog food', description: 'food is over' },
-    { id: 5, name: 'solve math homework', description: 'math is good' },
-    { id: 6, name: 'plot my world domination plan', description: 'oooh nice' },
+    new Goal(1, 'watch finding nemo', 'it is interesting'),
+    new Goal(2, 'buy cookies', 'i love cookies'),
+    new Goal(3, 'get new phone case', 'diana broke her case'),
+    new Goal(4, 'get dog food', 'food is over'),
+    new Goal(5, 'solve math homework', 'math is good'),
+    new Goal(6, 'plot my world domination plan', 'oooh nice'),
   ];
 
   constructor() {}
