@@ -1,35 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Goal } from '../goal';
+import { GoalService } from '../goal-service/goal.service';
 
+import { AlertService } from '../alert-service/alert.service';
 @Component({
   selector: 'app-goal',
   templateUrl: './goal.component.html',
   styleUrls: ['./goal.component.css'],
 })
 export class GoalComponent implements OnInit {
-  goals: Goal[] = [
-    new Goal(
-      1,
-      'watch finding nemo',
-      'it is interesting',
-      new Date(2020, 3, 14)
-    ),
-    new Goal(2, 'buy cookies', 'i love cookies', new Date(2020, 3, 14)),
-    new Goal(
-      3,
-      'get new phone case',
-      'diana broke her case',
-      new Date(2020, 3, 14)
-    ),
-    new Goal(4, 'get dog food', 'food is over', new Date(2020, 3, 14)),
-    new Goal(5, 'solve math homework', 'math is good', new Date(2020, 3, 14)),
-    new Goal(
-      6,
-      'plot my world domination plan',
-      'oooh nice',
-      new Date(2020, 3, 14)
-    ),
-  ];
+  goals: Goal[];
+  alertService: AlertService;
+
   toggleDetails(index: number) {
     this.goals[index].showDescription = !this.goals[index].showDescription;
   }
@@ -47,6 +29,7 @@ export class GoalComponent implements OnInit {
 
       if (toDelete) {
         this.goals.splice(index, 1);
+        this.alertService.alertMe('The goal has been deleted');
       }
     }
   }
@@ -57,7 +40,10 @@ export class GoalComponent implements OnInit {
     this.goals.push(goal);
   }
 
-  constructor() {}
+  constructor(goalService: GoalService, alertService: AlertService) {
+    this.goals = goalService.getGoals();
+    this.alertService = alertService;
+  }
 
   ngOnInit(): void {}
 }
