@@ -5,6 +5,8 @@ import { Quote } from '../quote-class/quote';
 import { AlertService } from '../alert-service/alert.service';
 import { HttpClient } from '@angular/common/http';
 
+import { QuoteRequestService } from '../quote-http/quote-request.service';
+
 @Component({
   selector: 'app-goal',
   templateUrl: './goal.component.html',
@@ -46,7 +48,8 @@ export class GoalComponent implements OnInit {
   constructor(
     private http: HttpClient,
     goalService: GoalService,
-    alertService: AlertService
+    alertService: AlertService,
+    private quoteService: QuoteRequestService
   ) {
     this.goals = goalService.getGoals();
     this.alertService = alertService;
@@ -57,6 +60,9 @@ export class GoalComponent implements OnInit {
       author: string;
       quote: string;
     }
+
+    this.quoteService.quoteRequest();
+    this.quote = this.quoteService.quote;
 
     this.http
       .get<ApiResponse>('http://quotes.stormconsultancy.co.uk/random.json')
