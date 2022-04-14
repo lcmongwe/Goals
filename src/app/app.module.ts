@@ -9,10 +9,10 @@ import { GoalDetailComponent } from './goal-detail/goal-detail.component';
 import { StrikethroughDirective } from './strikethrough.directive';
 import { DateCountPipe } from './date-count.pipe';
 import { GoalFormComponent } from './goal-form/goal-form.component';
-import { NgProgressModule } from '@ngx-progressbar/core';
-import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
+import { NgProgressModule } from 'ngx-progressbar';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +23,14 @@ import { AboutComponent } from './about/about.component';
     DateCountPipe,
     GoalFormComponent,
     AboutComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    // NgProgressModule,
-    // NgProgressHttpClientModule,
+    NgProgressModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
